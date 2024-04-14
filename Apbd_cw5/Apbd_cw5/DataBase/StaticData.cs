@@ -4,10 +4,22 @@ namespace Apbd_cw5.DataBase;
 
 public class StaticData //First variant of data base
 {
-    public static List<Animal> animals = new List<Animal>()
+    public static List<Animal> Animals = new List<Animal>()
     {
-        new Animal(),
-        new Animal(),
-        new Animal()
+        
     };
+
+    public static Animal GetAnimalById(int id)
+    {
+        Animal animalToReturn = new Animal();
+        foreach (var animal in Animals)
+        {
+            if (animal.Id == id)
+            {
+                animalToReturn = animal;
+            }
+        }
+
+        return animalToReturn;
+    }
 }

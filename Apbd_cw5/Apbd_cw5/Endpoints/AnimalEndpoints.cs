@@ -11,15 +11,15 @@ public static class AnimalEndpoints //Obsluga endpointow using minimal API, musi
         app.MapGet("/animals", () =>
         {
             //200 - Ok (Others: 400 - Bad Request,401 - Unauthorized,403 - Forbidden,404 - Not Found,500)
-            var animals = StaticData.animals;
+            var animals = StaticData.Animals;
             
             return Results.Ok(animals);
         });
 
         app.MapGet("/animals/{id}", (int id) =>
         {
-    
-            return Results.Ok(id);
+            var animal = StaticData.GetAnimalById(id);
+            return Results.Ok(animal);
         });
 
         app.MapPost("/animals", (Animal animal) =>
