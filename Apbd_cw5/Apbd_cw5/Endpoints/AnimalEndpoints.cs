@@ -47,5 +47,18 @@ public static class AnimalEndpoints //Obsluga endpointow using minimal API, musi
             StaticData.AddAnimal(animal);
             return Results.Ok();
         });
+
+        app.MapDelete("/animals{id}", (int id) =>
+        {
+            var animalToDelete = StaticData.GetAnimalById(id);
+
+            if (animalToDelete == null)
+            {
+                return Results.NotFound($"Animal with id {id} not found");
+            }
+
+            StaticData.RemoveAnimal(animalToDelete);
+            return Results.Ok();
+        });
     }
 }
