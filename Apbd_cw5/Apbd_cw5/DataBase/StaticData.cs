@@ -22,4 +22,9 @@ public class StaticData //First variant of data base
 
         return animalToReturn;
     }
+
+    public static void AddAnimal(Animal animal)
+    {
+        Animals.Add(animal);
+    }
 }

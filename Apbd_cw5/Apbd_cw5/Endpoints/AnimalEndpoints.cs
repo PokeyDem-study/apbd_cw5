@@ -25,6 +25,7 @@ public static class AnimalEndpoints //Obsluga endpointow using minimal API, musi
         app.MapPost("/animals", (Animal animal) =>
         {
             //201 - Created
+            StaticData.AddAnimal(animal);
             return Results.Created("", animal);
         });
     }
