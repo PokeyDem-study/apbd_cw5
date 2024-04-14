@@ -1,5 +1,6 @@
 ﻿using Apbd_cw5.DataBase;
 using Apbd_cw5.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Apbd_cw5.Endpoints;
 
@@ -19,6 +20,10 @@ public static class AnimalEndpoints //Obsluga endpointow using minimal API, musi
         app.MapGet("/animals/{id}", (int id) =>
         {
             var animal = StaticData.GetAnimalById(id);
+            if (animal == null)
+            {
+                return Results.NotFound($"Animal with id {id} not found");
+            }
             return Results.Ok(animal);
         });
 
@@ -27,6 +32,20 @@ public static class AnimalEndpoints //Obsluga endpointow using minimal API, musi
             //201 - Created
             StaticData.AddAnimal(animal);
             return Results.Created("", animal);
+        });
+
+        app.MapPut("/animals{id}", (int id, Animal animal) =>
+        {
+            var animalToEdit = StaticData.GetAnimalById(id);
+
+            if (animalToEdit == null)
+            {
+                return Results.NotFound($"Animal with id {id} not found");
+            }
+
+            StaticData.RemoveAnimal(animalToEdit);
+            StaticData.AddAnimal(animal);
+            return Results.Ok();
         });
     }
 }

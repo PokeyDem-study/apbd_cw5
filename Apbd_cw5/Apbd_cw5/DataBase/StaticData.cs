@@ -11,7 +11,7 @@ public class StaticData //First variant of data base
 
     public static Animal GetAnimalById(int id)
     {
-        Animal animalToReturn = new Animal();
+        Animal animalToReturn = null;
         foreach (var animal in Animals)
         {
             if (animal.Id == id)
@@ -26,5 +26,10 @@ public class StaticData //First variant of data base
     public static void AddAnimal(Animal animal)
     {
         Animals.Add(animal);
+    }
+
+    public static void RemoveAnimal(Animal animal)
+    {
+        Animals.Remove(animal);
     }
 }
