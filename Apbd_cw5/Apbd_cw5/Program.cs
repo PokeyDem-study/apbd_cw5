@@ -9,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();//Dodajemy controllery
-builder.Services.AddSingleton<MockDb>();
+//builder.Services.AddControllers();//Dodajemy controllery
+// builder.Services.AddSingleton<MockDb>();
 
 var app = builder.Build();
 
@@ -28,5 +28,5 @@ app.MapAnimalEndpoints();
 app.MapVisitEndpoints();
 
 //Controllers
-app.MapControllers(); //Mapuje wszystkie koncowki z kontrollerow
+//app.MapControllers(); //Mapuje wszystkie koncowki z kontrollerow
 app.Run();
