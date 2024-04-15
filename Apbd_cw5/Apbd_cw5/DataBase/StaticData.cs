@@ -8,6 +8,26 @@ public class StaticData //First variant of data base
 
     public static List<Visit> Visits = new List<Visit>();
 
+    public static List<Visit> GetVisitsForAnimal(Animal animal)
+    {
+        List<Visit> visitsToReturn = new List<Visit>();
+
+        foreach (var visit in Visits)
+        {
+            if (visit.Animal.Equals(animal))
+            {
+                visitsToReturn.Add(visit);
+            }
+        }
+
+        return visitsToReturn;
+    }
+
+    public static void AddVisit(Visit visit)
+    {
+        Visits.Add(visit);
+    }
+
     public static Animal? GetAnimalById(int id)
     {
         Animal? animalToReturn = null;
