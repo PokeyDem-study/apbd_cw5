@@ -8,13 +8,13 @@ public class StaticData //First variant of data base
 
     public static List<Visit> Visits = new List<Visit>();
 
-    public static List<Visit> GetVisitsForAnimal(Animal animal)
+    public static List<Visit> GetVisitsForAnimal(int id)
     {
         List<Visit> visitsToReturn = new List<Visit>();
 
         foreach (var visit in Visits)
         {
-            if (visit.Animal.Equals(animal))
+            if (visit.AnimalId == id)
             {
                 visitsToReturn.Add(visit);
             }
@@ -23,9 +23,18 @@ public class StaticData //First variant of data base
         return visitsToReturn;
     }
 
-    public static void AddVisit(Visit visit)
+    public static bool AddVisit(Visit visit)
     {
+        var visitAnimal = GetAnimalById(visit.AnimalId);
+        
+        if (visitAnimal == null)
+            return false;
+        
+        if (!Animals.Contains(visitAnimal))
+            return false;
+        
         Visits.Add(visit);
+        return true;
     }
 
     public static Animal? GetAnimalById(int id)
