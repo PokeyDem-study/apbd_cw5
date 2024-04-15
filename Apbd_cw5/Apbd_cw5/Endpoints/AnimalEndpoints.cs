@@ -1,6 +1,5 @@
 ﻿using Apbd_cw5.DataBase;
 using Apbd_cw5.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Apbd_cw5.Endpoints;
 
